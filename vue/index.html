@@ -27,6 +27,9 @@ initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
                 <div v-for="variant in variants" :key="variant.variantId">
                     <p>{{ variant.variantColor }}</p>
                 </div>
+                <ul>
+                    <li v-for="size in sizes">{{ size }}</li>
+                </ul>
             </div>
         </div>
     </div>
