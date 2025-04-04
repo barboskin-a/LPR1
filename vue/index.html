@@ -25,11 +25,14 @@ initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
                     <li v-for="detail in details">{{ detail }}</li>
                 </ul>
                 <div v-for="variant in variants" :key="variant.variantId">
-                    <p>{{ variant.variantColor }}</p>
+                    <p @mouseover="updateProduct(variant.variantImage)">
+                        {{ variant.variantColor }}
+                    </p>
                 </div>
-                <ul>
-                    <li v-for="size in sizes">{{ size }}</li>
-                </ul>
+                <div class="cart">
+                    <p>Cart({{ cart }})</p>
+                </div>
+                <button v-on:click="addToCart">Add to cart</button>
             </div>
         </div>
     </div>
