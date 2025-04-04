@@ -1,19 +1,5 @@
 let product = "Socks";
 
-Vue.component('product-details', {
-    props: {
-        details: {
-            type: Array,
-            required: true
-        }
-    },
-    template: `
-        <ul>
-            <li v-for="detail in details">{{ detail }}</li>
-        </ul>
-    `
-})
-
 Vue.component('product', {
     props: {
         premium: {
@@ -41,11 +27,7 @@ Vue.component('product', {
              :key="variant.variantId"
              :style="{ backgroundColor:variant.variantColor }"
              @mouseover="updateProduct(index)">
-             </div>
-                     
-             <div class="cart">
-                 <p>Cart({{ cart }})</p>
-             </div>
+             </div>    
                  
              <button v-on:click="addToCart" :disabled="!inStock" :class="{ disabledButton: !inStock }">Add to cart</button>
          </div>
@@ -72,12 +54,12 @@ Vue.component('product', {
                     variantQuantity: 0
                 }
             ],
-            cart: 0
         }
     },
     methods: {
         addToCart() {
-            this.cart += 1
+            this.$emit('add-to-cart',
+                this.variants[this.selectedVariant].variantId);
         },
         updateProduct(index) {
             this.selectedVariant = index;
@@ -107,6 +89,12 @@ Vue.component('product', {
 let app = new Vue({
     el: '#app',
     data: {
-        premium: true
+        premium: true,
+        cart: []
+    },
+    methods: {
+        updateCart(id) {
+            this.cart.push(id);
+        },
     }
 })
