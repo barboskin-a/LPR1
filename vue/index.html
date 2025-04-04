@@ -7,6 +7,7 @@
 initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script defer src="js/vue.js"></script>
+    <link rel="stylesheet" href="css/main.css">
     <script defer src="js/main.js"></script>
     <title>Product App</title>
 </head>
@@ -14,10 +15,12 @@ initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 <div id="app">
     <div class="product">
         <div class="product-image">
-            <img alt="#" src=""/>
+            <img alt="#" v-bind:src="image" v-bind:alt="altText"/>
         </div>
         <div class="product-info">
             <h1>{{ product }}</h1>
+            <p> {{ description }}</p>
+            <a v-bind:href="link">More products like this.</a>
         </div>
     </div>
 </div>
