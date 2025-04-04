@@ -21,6 +21,7 @@ initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
                 <h1>{{ title }}</h1>
                 <p v-if="inStock">In stock</p>
                 <p v-else>Out of Stock</p>
+                <p>{{ Sale }}</p>
                 <ul>
                     <li v-for="detail in details">{{ detail }}</li>
                 </ul>

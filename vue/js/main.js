@@ -8,6 +8,7 @@ let app = new Vue({
         selectedVariant: 0,
         altText: "A pair of socks",
         inStock: true,
+        onSale: true,
         details: ['80% cotton', '20% polyester', 'Gender-neutral'],
         variants: [
             {
@@ -43,6 +44,12 @@ let app = new Vue({
         },
         inStock(){
             return this.variants[this.selectedVariant].variantQuantity;
+        },
+        Sale(){
+            if (this.onSale) {
+                return this.brand + ' ' + this.product + ' скидочка есть :)'
+            }
+            return  this.brand + ' ' + this.product + ' скидочки нет :('
         }
-    }
+        }
 })
